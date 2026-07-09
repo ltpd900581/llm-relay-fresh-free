@@ -1,51 +1,611 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fafbfb">
+  <meta name="theme-color" content="#030712">
   <meta name="robots" content="index,follow">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <title>顶级 AI 模型中转集合 | llm-relay-fresh-free</title>
-  <meta name="description" content="顶级 AI 模型中转集合，聚合 OpenAI GPT, Anthropic Claude, Google Gemini, DeepSeek, Llama, Qwen, Grok, Mistral, Cohere Command, Perplexity, Runway, Pika 等顶级模型的免费 AI 中转、低价 AI API、ChatGPT relay、OpenAI relay、AI gateway 和 AIGC 工具入口。">
-  <meta name="keywords" content="llm-relay-fresh-free,免费AI中转,低价AI API,白送AI API,免费GPT,GPT,Claude,Gemini,DeepSeek,Llama,Qwen,Grok,Mistral,OpenAI API,ChatGPT relay,Claude API,Gemini API,AIGC,AI gateway,api proxy,ai-router,free AI relay,cheap LLM gateway,OPPO style clean UI">
+  <title>Free2AI - 免费 AI API 中转站 | GPT5.5 Claude Gemini 低成本调用</title>
+  <meta name="description" content="Free2AI 提供免费试用友好的 AI API 中转导航，快速进入 GPT5.5、Claude、Gemini、OpenAI API 与 AIGC 工具低成本调用入口。">
+  <meta name="keywords" content="free ai,ai api,gpt api,gpt5,claude,gemini,openai api,chatgpt relay,ai gateway,api proxy,ai-router,aigc tools,free ai relay">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    :root { --bg:#fafbfb; --primary:#5f7086; --accent:#d3dce7; --ink:#111827; --muted:rgba(16,32,40,.66); --soft:#f2f5f8; --line:rgba(16,32,40,.1); --glass:rgba(255,255,255,.72); }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { min-height:100vh; font-family:"Segoe UI",Arial,"Microsoft YaHei",sans-serif; color:var(--ink); background:radial-gradient(circle at 14% 10%, color-mix(in srgb, var(--accent), transparent 72%), transparent 28rem), radial-gradient(circle at 86% 8%, color-mix(in srgb, var(--primary), transparent 78%), transparent 30rem), linear-gradient(180deg,#fff,var(--bg)); overflow-x:hidden; }
-    a { color:inherit; text-decoration:none; }
-    .shell { width:min(1160px,calc(100% - 32px)); margin:0 auto; padding:30px 0 44px; }
-    .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:26px; }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:-.02em; }
-    .mark { width:38px; height:38px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--primary)); box-shadow:0 12px 28px color-mix(in srgb, var(--primary), transparent 72%); }
-    .navlinks { display:flex; gap:10px; flex-wrap:wrap; }
-    .navlinks a { padding:10px 14px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.58); color:var(--muted); font-size:13px; font-weight:700; }
-    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:26px; align-items:center; min-height:560px; }
-    .hero.reverse { grid-template-columns:.95fr 1.05fr; }
-    .copy { border:1px solid var(--line); border-radius:42px 18px 42px 18px; padding:44px; background:var(--glass); backdrop-filter:blur(18px); box-shadow:0 24px 70px rgba(20,40,60,.08); }
-    .eyebrow { display:inline-flex; padding:8px 12px; border-radius:999px; background:var(--soft); color:var(--primary); font-size:13px; font-weight:800; margin-bottom:18px; }
-    h1 { font-size:clamp(38px,6vw,74px); line-height:1.04; letter-spacing:-1.8px; margin-bottom:18px; }
-    h1 span { color:var(--primary); }
-    .lead { color:var(--muted); font-size:18px; line-height:1.9; max-width:760px; }
-    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
-    .btn { min-height:54px; display:inline-flex; align-items:center; justify-content:center; padding:0 22px; border-radius:999px; font-weight:800; border:1px solid var(--line); background:#fff; box-shadow:0 10px 26px rgba(20,40,60,.06); }
-    .btn.primary { color:#fff; border:0; background:linear-gradient(135deg,var(--primary),var(--accent)); }
-    .panel { display:grid; gap:14px; }
-    .tile { border:1px solid var(--line); border-radius:28px; padding:22px; background:rgba(255,255,255,.62); backdrop-filter:blur(16px); box-shadow:0 18px 48px rgba(20,40,60,.06); }
-    .tile h2 { font-size:19px; margin-bottom:8px; }
-    .tile p { color:var(--muted); line-height:1.75; font-size:14px; }
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:18px; }
-    .card { border:1px solid var(--line); border-radius:24px; padding:20px; background:rgba(255,255,255,.66); }
-    .card h3 { margin-bottom:8px; }
-    .card p { color:var(--muted); line-height:1.72; font-size:14px; }
-    @media(max-width:860px){ .hero,.hero.reverse{grid-template-columns:1fr;} .copy{padding:28px;} .grid{grid-template-columns:1fr;} .btn{width:100%;} }
+    :root {
+      --bg: #030712;
+      --bg-surface: rgba(17, 24, 39, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --border-hover: rgba(255, 255, 255, 0.2);
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.5);
+      --secondary: #8b5cf6;
+      --accent: #22d3ee;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Animated Background */
+    .bg-mesh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    
+    .bg-mesh::before, .bg-mesh::after {
+      content: '';
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+    
+    .bg-mesh::before {
+      background: var(--primary);
+      top: -200px;
+      left: -200px;
+    }
+    
+    .bg-mesh::after {
+      background: var(--secondary);
+      bottom: -200px;
+      right: -200px;
+      animation-delay: -10s;
+    }
+
+    .bg-mesh .orb {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(150px);
+      opacity: 0.1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 15s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 100px) scale(1.2); }
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.08; }
+      100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.15; }
+    }
+
+    /* Layout */
+    .container {
+      width: min(1200px, 100% - 40px);
+      margin: 0 auto;
+      padding: 30px 0 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+      border: 1px solid var(--border);
+      padding: 40px 40px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .headline {
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .headline .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #67e8f9 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      animation: shine 4s linear infinite;
+    }
+
+    .subheadline {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
+    
+    .subheadline strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 32px;
+      height: 56px;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #030712;
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+      animation: btnPulse 2s infinite;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px var(--primary-glow);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid var(--border);
+    }
+    
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .tag:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-hover);
+      color: #fff;
+    }
+
+    /* Features Section */
+    .features-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      animation: fadeIn 1s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+
+    .features-header h2 {
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(to right, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .features-header p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
+      background: rgba(30, 41, 59, 0.8);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .card.wide {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    
+    .card.wide:hover {
+      border-color: rgba(59, 130, 246, 0.6);
+    }
+
+    .card.wide h3 {
+      font-size: 24px;
+      color: var(--accent);
+    }
+
+    .highlight {
+      color: #fff;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+      opacity: 0.4;
+      border-radius: 2px;
+    }
+
+    /* Notice & Footer */
+    .notice {
+      margin-top: 20px;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      font-size: 14px;
+      line-height: 1.7;
+      display: flex;
+      gap: 16px;
+      animation: fadeIn 1s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+    
+    .notice-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+      animation: fadeIn 1s ease-out 0.8s forwards;
+      opacity: 0;
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+
+    @keyframes btnPulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(103, 232, 249, 0.8);
+      animation: float-up linear infinite;
+    }
+    
+    @keyframes float-up {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      20% { opacity: 1; transform: translateY(80vh) scale(1); }
+      80% { opacity: 1; transform: translateY(20vh) scale(1); }
+      100% { transform: translateY(-100px) scale(0); opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .card.wide {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 0 40px;
+        gap: 40px;
+      }
+      .hero {
+        padding: 30px 24px;
+      }
+      .features-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .card.wide {
+        grid-column: span 1;
+      }
+      .actions {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <nav class="nav"><div class="brand"><span class="mark"></span><span>llm-relay-fresh-free</span></div><div class="navlinks"><a href="https://pay.kklt.lol/">入口</a><a href="https://free2ai.pages.dev/">Free2AI</a><a href="https://pay.kklt.lol/">服务</a></div></nav>
-    <section class="hero normal"><div class="copy"><div class="eyebrow">Free AI Relay · Clean LLM Gateway</div><h1><span>顶级 AI 模型中转集合</span><br>轻盈、清爽、低成本</h1><p class="lead">顶级 AI 模型中转集合，聚合 OpenAI GPT, Anthropic Claude, Google Gemini, DeepSeek, Llama, Qwen, Grok, Mistral, Cohere Command, Perplexity, Runway, Pika 等顶级模型的免费 AI 中转、低价 AI API、ChatGPT relay、OpenAI relay、AI gateway 和 AIGC 工具入口。 页面采用清爽产品化风格，强调免费接入、低价中转和主流顶级模型访问路线。</p><div class="actions"><a class="btn primary" href="https://pay.kklt.lol/" target="_blank" rel="noopener noreferrer">打开关联入口</a><a class="btn" href="https://pay.kklt.lol/" target="_blank" rel="noopener noreferrer">推荐中转服务</a><a class="btn" href="https://free2ai.pages.dev/" target="_blank" rel="noopener noreferrer">Free2AI 导航</a></div></div><div class="panel"><div class="tile"><h2>覆盖模型</h2><p>OpenAI GPT, Anthropic Claude, Google Gemini, DeepSeek, Llama, Qwen, Grok, Mistral, Cohere Command, Perplexity, Runway, Pika</p></div><div class="tile"><h2>适合场景</h2><p>ChatGPT relay、Claude API、Gemini API、OpenAI API relay、AIGC、自动化脚本、AI 工具测试。</p></div><div class="tile"><h2>视觉方向</h2><p>白色空间、柔和渐变、轻玻璃层次和克制的未来感。</p></div></div></section>
-    <section class="grid"><article class="card"><h3>免费优先</h3><p>先试用、再核验价格和稳定性。</p></article><article class="card"><h3>低价中转</h3><p>聚合 AI gateway、api proxy、LLM router。</p></article><article class="card"><h3>模型覆盖</h3><p>围绕 GPT、Claude、Gemini、DeepSeek、Qwen、Grok、Mistral。</p></article></section>
+  <!-- Animated Background -->
+  <div class="bg-mesh">
+    <div class="orb"></div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+
+
+      <div class="hero-content">
+        <h2 class="headline"><span class="gradient-text">免费 AI API 中转</span><br>低成本调用 GPT5.5 / Claude</h2>
+        <p class="subheadline">
+          <strong>不用到处找失效链接。</strong>Free2AI 聚合 AI API 中转、GPT5.5、Claude、Gemini、OpenAI API、ChatGPT relay 与 AIGC 工具入口，适合开发测试、自动化脚本、机器人和内容生成工作流快速接入。
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://pay.kklt.lol/" target="_blank" rel="noopener noreferrer">GPT5.6通道</a>
+          <a class="btn btn-secondary" href="https://fuckme.443.hk/" target="_blank" rel="noopener noreferrer">Claude4.8通道</a>
+          <a class="btn btn-secondary" href="https://free2ai.pages.dev/" target="_blank" rel="noopener noreferrer">打开 Free2AI 免费导航</a>
+          <a class="btn btn-ghost" href="https://t.me/kkscshop" target="_blank" rel="noopener noreferrer">电报客服咨询</a>
+        </div>
+
+        <div class="tags">
+          <span class="tag">免费试用</span>
+          <span class="tag">AI API</span>
+          <span class="tag">GPT5.5</span>
+          <span class="tag">Claude</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">AIGC 工具</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="features-header">
+        <h2>为什么适合直接收藏</h2>
+        <p>面向 AI 用户、开发者和 AIGC 创作者</p>
+      </div>
+      
+      <div class="grid">
+        <article class="card">
+          <h3>免费试用优先</h3>
+          <p>先测试、再决定，适合想快速体验 GPT5.5、Claude、Gemini 和 OpenAI API 的用户。</p>
+        </article>
+        
+        <article class="card">
+          <h3>低成本 API 中转</h3>
+          <p>聚合 <span class="highlight">AI API / api proxy</span> 入口，适合预算敏感的开发和测试场景。</p>
+        </article>
+        
+        <article class="card">
+          <h3>一站式跳转</h3>
+          <p>服务入口、免费导航、电报客服都放在首屏，打开页面就能直接进入，不再翻群、翻帖、翻历史链接。</p>
+        </article>
+        
+        <article class="card wide">
+          <h3>主推入口推荐</h3>
+          <p><span class="highlight">pay.kklt.lol</span> 是当前页面重点推荐的 AI 中转服务入口；<br><span class="highlight">free2ai.pages.dev</span> 是免费 AI 中转导航主站，适合长期收藏和快速查看。</p>
+        </article>
+        
+        <article class="card">
+          <h3>覆盖更多 AIGC 场景</h3>
+          <p>适合 ChatGPT relay、OpenAI API relay、自动化脚本、AI 工具测试、机器人、内容生成和轻量项目接入。</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="notice">
+      <div class="notice-icon">⚠️</div>
+      <div>
+        <strong>免责声明：</strong>本页面仅为 AI API 中转信息导航与入口展示，不是 OpenAI、Anthropic、Google 或任何模型厂商的官方服务。使用第三方中转服务前，请自行核验价格、额度、隐私协议、服务条款和稳定性。
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>Free2AI · 免费 AI API 中转导航 · https://free2ai.pages.dev/</p>
+    </footer>
   </main>
+
+  <script>
+    // 3D Tilt Effect for Cards
+    const tiltElements = document.querySelectorAll('.hero, .card');
+    tiltElements.forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate tilt angles
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+        
+        el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        el.style.transition = 'none';
+      });
+      
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+        el.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease';
+      });
+      
+      el.addEventListener('mouseenter', () => {
+        el.style.transition = 'transform 0.1s ease';
+      });
+    });
+
+    // Floating Particles Effect
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'particles';
+    document.body.prepend(particlesContainer);
+    
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 3 + 1;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${Math.random() * 100}vw`;
+      p.style.animationDuration = `${Math.random() * 15 + 10}s`;
+      p.style.animationDelay = `${Math.random() * 10}s`;
+      particlesContainer.appendChild(p);
+    }
+  </script>
 </body>
 </html>
